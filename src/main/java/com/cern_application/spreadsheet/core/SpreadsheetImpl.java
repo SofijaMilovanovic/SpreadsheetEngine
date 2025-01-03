@@ -18,11 +18,17 @@ public class SpreadsheetImpl implements Spreadsheet {
 
     @Override
     public String get(int row, int col) {
+        if (row < 0 || row >= rows || col < 0 || col >= columns) {
+          throw new IndexOutOfBoundsException("Invalid cell indices: (" + row + ", " + col + ")");
+        }
         return data.getOrDefault(row + "," + col, "");
     }
 
     @Override
     public void put(int row, int col, String value) {
+        if (row < 0 || row >= rows || col < 0 || col >= columns) {
+            throw new IndexOutOfBoundsException("Invalid cell indices: (" + row + ", " + col + ")");
+        }
         data.put(row + "," + col, value);
     }
 
