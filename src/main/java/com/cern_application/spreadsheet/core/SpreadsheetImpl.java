@@ -29,7 +29,11 @@ public class SpreadsheetImpl implements Spreadsheet {
         if (row < 0 || row >= rows || col < 0 || col >= columns) {
             throw new IndexOutOfBoundsException("Invalid cell indices: (" + row + ", " + col + ")");
         }
-        data.put(row + "," + col, value);
+        if (isInteger(value)) {
+            data.put(row + "," + col, value.trim());
+        } else {
+            data.put(row + "," + col, value);
+        }
     }
 
     @Override
@@ -37,7 +41,7 @@ public class SpreadsheetImpl implements Spreadsheet {
         String value = get(row, col);
         if (value.startsWith("=")) {
             return ValueType.FORMULA;
-        } else if (value.matches("\\d+")) {
+        } else if (isInteger(value)) {
             return ValueType.INTEGER;
         }
         return ValueType.STRING;
@@ -53,5 +57,9 @@ public class SpreadsheetImpl implements Spreadsheet {
                 data.putIfAbsent(row + "," + col, "");
             }
         }
+    }
+
+    private boolean isInteger (String value) {
+        return value.trim().matches("\\d+");
     }
 }
