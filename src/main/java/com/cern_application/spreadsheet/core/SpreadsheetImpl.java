@@ -23,7 +23,7 @@ public class SpreadsheetImpl implements Spreadsheet {
 
     @Override
     public void put(int row, int col, String value) {
-        // TODO: Store the value in the cell at the given row and column
+        data.put(row + "," + col, value);
     }
 
     @Override
