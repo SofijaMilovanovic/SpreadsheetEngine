@@ -34,8 +34,13 @@ public class SpreadsheetImpl implements Spreadsheet {
 
     @Override
     public ValueType getValueType(int row, int col) {
-        // TODO: Determine and return the value type of the cell at the given row and column
-        return null;
+        String value = get(row, col);
+        if (value.startsWith("=")) {
+            return ValueType.FORMULA;
+        } else if (value.matches("\\d+")) {
+            return ValueType.INTEGER;
+        }
+        return ValueType.STRING;
     }
 
     private void validateIndices(int row, int col) {
