@@ -4,8 +4,7 @@ import com.cern_application.spreadsheet.core.SpreadsheetImpl;
 
 public class Office {
 
-    public static SpreadsheetImpl newSpreadsheet(int rows, int columns) {
-        // TODO: Return a new instance of SpreadsheetImpl
-        return null;
-    }
+  public static SpreadsheetImpl newSpreadsheet(int rows, int columns) {
+    return new SpreadsheetImpl(rows, columns);
+  }
 }

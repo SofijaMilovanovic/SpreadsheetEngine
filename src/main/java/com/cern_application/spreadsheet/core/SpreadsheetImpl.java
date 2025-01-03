@@ -13,12 +13,12 @@ public class SpreadsheetImpl implements Spreadsheet {
         this.rows = rows;
         this.columns = columns;
         this.data = new HashMap<>();
+        initializeGrid();
     }
 
     @Override
     public String get(int row, int col) {
-        // TODO: Retrieve the value of the cell at the given row and column
-        return null;
+        return data.getOrDefault(row + "," + col, "");
     }
 
     @Override
@@ -34,5 +34,13 @@ public class SpreadsheetImpl implements Spreadsheet {
 
     private void validateIndices(int row, int col) {
         // TODO: Validate if the given indices are within bounds
+    }
+
+    private void initializeGrid() {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                data.putIfAbsent(row + "," + col, "");
+            }
+        }
     }
 }
