@@ -16,6 +16,14 @@ public class SpreadsheetImpl implements Spreadsheet {
         initializeGrid();
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
     @Override
     public String get(int row, int col) {
         if (row < 0 || row >= rows || col < 0 || col >= columns) {
@@ -45,10 +53,6 @@ public class SpreadsheetImpl implements Spreadsheet {
             return ValueType.INTEGER;
         }
         return ValueType.STRING;
-    }
-
-    private void validateIndices(int row, int col) {
-        // TODO: Validate if the given indices are within bounds
     }
 
     private void initializeGrid() {
