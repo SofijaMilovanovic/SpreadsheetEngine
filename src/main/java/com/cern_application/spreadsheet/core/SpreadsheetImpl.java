@@ -3,12 +3,21 @@ package com.cern_application.spreadsheet.core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Implementation of the Spreadsheet interface.
+ */
 public class SpreadsheetImpl implements Spreadsheet {
 
     private final int rows;
     private final int columns;
     private final Map<String, String> data;
 
+    /**
+     * Constructs a SpreadsheetImpl with the specified dimensions ensuring its values are not null.
+     *
+     * @param rows the number of rows.
+     * @param columns the number of columns.
+     */
     public SpreadsheetImpl(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -16,10 +25,20 @@ public class SpreadsheetImpl implements Spreadsheet {
         initializeGrid();
     }
 
+    /**
+     * Returns the number of rows in the spreadsheet.
+     *
+     * @return the row count.
+     */
     public int getRows() {
         return rows;
     }
 
+    /**
+     * Returns the number of columns in the spreadsheet.
+     *
+     * @return the column count.
+     */
     public int getColumns() {
         return columns;
     }

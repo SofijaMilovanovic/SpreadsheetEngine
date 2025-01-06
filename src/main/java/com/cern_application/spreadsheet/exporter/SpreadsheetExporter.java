@@ -2,16 +2,30 @@ package com.cern_application.spreadsheet.exporter;
 
 import com.cern_application.spreadsheet.core.SpreadsheetImpl;
 
+/**
+ * Abstract base class for exporting spreadsheet data.
+ */
 public abstract class SpreadsheetExporter {
 
     protected final SpreadsheetImpl sheet;
     protected final char fillChar;
 
+    /**
+     * Constructs a SpreadsheetExporter with the given spreadsheet and fill character.
+     *
+     * @param sheet the spreadsheet to export.
+     * @param fillChar the character to fill empty cells.
+     */
     protected SpreadsheetExporter(SpreadsheetImpl sheet, char fillChar) {
         this.sheet = sheet;
         this.fillChar = fillChar;
     }
 
+    /**
+     * Exports the spreadsheet data as a string.
+     *
+     * @return the exported data.
+     */
     public String export() {
         int maxRow = sheet.getRows() - 1;
         int maxColumn = sheet.getColumns() - 1;
